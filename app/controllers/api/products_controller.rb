@@ -10,10 +10,8 @@ class Api::ProductsController < ApplicationController
       @products = @products.where("price < ?", 250)
     end
 
-    if params[:sort] == 'price' && params[:sort_order] == 'desc'
-      @products = @products.order(:price => :desc)
-    elsif params[:sort] == 'price'
-      @products = @products.order(:price => :asc)
+    if params[:sort] && params[:sort_order]
+      @products = @products.order(params[:sort] => params[:sort_order])
     else
       @products = @products.order(:id)
     end
