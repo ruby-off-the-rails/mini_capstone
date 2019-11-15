@@ -10,3 +10,9 @@
     total: number_to_currency(product.total),
   }
 }
+
+
+# no filtering by name
+# no filtering by price
+# sorting asc/desc
+# sorting by different attributes

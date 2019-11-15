@@ -1,6 +1,15 @@
 class Api::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.where("name LIKE ?", "%#{params[:search]}%")
+    @products = @products.where("price < ?", 250)
+    if params[:sort] == 'price' && params[:sort_order] == 'desc'
+      @products = @products.order(:price => :desc)
+    elsif params[:sort] == 'price'
+      @products = @products.order(:price => :asc)
+    else
+      @products = @products.order(:id)
+    end
+
     render 'index.json.jb'
   end
 
