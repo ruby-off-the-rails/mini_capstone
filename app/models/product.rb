@@ -8,6 +8,10 @@ class Product < ApplicationRecord
   # # description minimum 10 characters
   # validates :description, length: {minimum: 10}
 
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
+
   def is_discounted?
     !(price >= 10)
   end
