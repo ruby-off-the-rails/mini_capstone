@@ -27,8 +27,8 @@ class Api::ProductsController < ApplicationController
   def create
     @product = Product.new(
       name: params[:name],
-      price: params[:price],
       image_url: params[:image_url],
+      price: params[:price],
       description: params[:description]
     )
     if @product.save

@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_many :images
   # what validations should a product have?
   # max price of 100
   # minimum price of 1
