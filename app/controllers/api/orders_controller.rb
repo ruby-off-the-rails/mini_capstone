@@ -1,6 +1,10 @@
 class Api::OrdersController < ApplicationController
-  def create
+  def index
+    @orders = Order.all
+    render 'index.json.jb'
+  end
 
+  def create
     product = Product.find_by(id: params[:product_id])
     calculated_subtotal =  params[:quantity].to_i * product.price
     calculated_tax =  calculated_subtotal * 0.09
@@ -17,4 +21,5 @@ class Api::OrdersController < ApplicationController
     @order.save!
     render 'show.json.jb'
   end
+
 end
