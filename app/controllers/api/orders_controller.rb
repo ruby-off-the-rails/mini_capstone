@@ -1,6 +1,6 @@
 class Api::OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = current_user.orders
     render 'index.json.jb'
   end
 
@@ -19,6 +19,11 @@ class Api::OrdersController < ApplicationController
       total: calculated_total
     )
     @order.save!
+    render 'show.json.jb'
+  end
+
+  def show
+    @order = Order.find_by(id: params[:id])
     render 'show.json.jb'
   end
 
