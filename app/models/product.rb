@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   belongs_to :supplier
   has_many :category_products
   has_many :categories, through: :category_products
+  has_many :carted_products
   # what validations should a product have?
   # max price of 100
   # minimum price of 1
